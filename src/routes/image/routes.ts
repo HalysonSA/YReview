@@ -23,6 +23,7 @@ routerImage.post(
                 res.status(200).json({
                     status: 1,
                     message: 'Image uploaded',
+                    data: image,
                 })
             })
             .catch((err) => {

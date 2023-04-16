@@ -9,18 +9,12 @@ export default async function uploadImage(props: TImage) {
     const prisma = new PrismaClient()
     const { url, reviewId } = props
 
-    await prisma.reviewImages
-        .create({
-            data: {
-                url,
-                reviewId,
-            },
-        })
-        .then((image) => {
-            return image
-        })
-        .catch((err) => {
-            console.log(err)
-            return null
-        })
+    const image = await prisma.reviewImages.create({
+        data: {
+            url,
+            reviewId,
+        },
+    })
+
+    return image
 }
